@@ -1,0 +1,155 @@
+  <div class="container">
+  <h1>All Accepted Student Data</h1>
+</div>
+
+  <div class="table-responsive-md" class = "ajay">
+
+      <table class="table" *ngIf="studentList && studentList.length > 0  else elseBlock">
+        <thead>
+          <tr>
+            <th scope="col">Student Id</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Student Address</th>
+            <th scope="col">City</th>
+            <th scope="col">App Status</th>
+            <th scope="col">Approval Status</th>
+            <th scope="col">More Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of studentList" style="text-align: center;">
+            <td>{{e.studentId}}</td>
+            <td>{{e.fullName}}</td>
+            <td>{{e.birthdate}}</td>
+            <td>{{e.gender}}</td>
+            <td>{{e.mobile}}</td>
+            <td>{{e.email}}</td>
+            <td>{{e.address}}</td>
+            <td>{{e.city}}</td>
+            <td>{{e.scholarship.appStatus}}</td>
+            <td>{{e.scholarship.approval}}</td>
+            <td>
+              <!-- Button trigger modal -->
+              <button type="button" (click) = "onSubmit(e)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Other Details
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="exampleModalLabel">More Student Info</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h3>Scholarship Details</h3>
+                            <div class="form-group">
+                              <label>Scholarship scheme </label><br>
+                              <input readonly value={{student.scholarship.scholarshipName}} name="scheme" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Field</label><br>
+                              <input readonly value={{student.scholarship.field}} name="field" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Course </label><br>
+                              <input readonly value={{student.scholarship.course}} name="course" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Course Year:</label><br>
+                              <input readonly value={{student.scholarship.courseYear}} name="courseYear" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>SSC score :</label><br>
+                              <input readonly value={{student.scholarship.sscScore}} name="ssc" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>HSC score:</label><br>
+                              <input readonly value={{student.scholarship.hscScore}} name="hsc" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Family income: </label><br>
+                              <input readonly value={{student.scholarship.familyIncome}} name="income" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Bank name: </label><br>
+                              <input readonly value={{student.scholarship.bankName}} name="bankName" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Bank account number:</label><br>
+                              <input readonly value={{student.scholarship.accountNo}} name="accountNo" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>IFSC code:</label><br>
+                              <input readonly value={{e.scholarship.bankIfsc}} name="IFSC" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Family income: </label><br>
+                              <input readonly value={{student.scholarship.familyIncome}} name="income" class="form-control" />
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <h3>Institution Details</h3>
+                            <div class="form-group">
+                              <label>Institute Name: </label><br>
+                              <input readonly value={{student.institute.name}} name="Institutename" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Institute code: </label><br>
+                              <input readonly value={{student.institute.code}} name="code" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Institute category: </label><br>
+                              <input readonly value={{student.institute.category}} name="category" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Stream </label><br>
+                              <input readonly value={{student.institute.type}} name="stream" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>University Name: </label><br>
+                              <input readonly value={{student.institute.university}} name="uniName" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>Institute Address: </label><br>
+                              <input readonly value={{student.institute.address}} name="address" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>City: </label><br>
+                              <input readonly value={{student.institute.city}} name="Icity" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                              <label>State: </label><br>
+                              <input readonly value={{student.institute.state}} name="Istate" class="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button " class="btn btn-success btn-lg btn-block" (click)=grant(e)>Grant Scholarship</button>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #elseBlock>
+        <marquee scrollamount="12">
+          <h2 style="text-align: center;"> There is no student Information to be displayed </h2>
+      </marquee>
+      </ng-template>
+</div>

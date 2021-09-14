@@ -1,0 +1,122 @@
+<div class="container">
+    <h1>
+        Application Details</h1>
+</div>
+    <div class="table-responsive-md" class = "ajay">
+        <table class="table table-hover" *ngIf="studentList && studentList.length > 0  else elseBlock">
+            <thead>
+                <tr>
+                    <th scope="row">Student Id</th>
+                    <th scope="row">Student Name</th>
+                    <th scope="row">Birthdate</th>
+                    <th scope="row">Gender</th>
+                    <th scope="row">Mobile Number</th>
+                    <th scope="row">Email</th>
+                    <th scope="row">Student Address</th>
+                    <th scope="row">City</th>
+                    <th scope="row">Update Button</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of studentList" style="text-align: center;">
+                    <td scope="col">{{e.studentId}}</td>
+                    <td scope="col">{{e.fullName}}</td>
+                    <td scope="col">{{e.birthdate}}</td>
+                    <td scope="col">{{e.gender}}</td>
+                    <td scope="col">{{e.mobile}}</td>
+                    <td scope="col">{{e.email}}</td>
+                    <td scope="col">{{e.address}}</td>
+                    <td scope="col" >{{e.city}}</td>
+                    <td >
+                        <!-- <i class="fas fa-edit" (click)=update(e)></i> -->
+                        <button style="background-color: #29465B;color: white;" type="submit"
+                        class="btn btn-lg active btn-block" data-mdb-ripple-color="dark" [disabled]="e.scholarship.appStatus=='Approved' || e.scholarship.appStatus=='Rejected'" (click)=update(e)>update</button>
+                        
+                    </td>
+                    <td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #elseBlock>
+            <marquee scrollamount="12">
+                <h2 style="text-align: center;"> There is no student Information to be displayed </h2>
+            </marquee>
+        </ng-template>
+    </div>
+
+    <div class="table-responsive-md" class = "ajay">
+        <table class="table table-hover" *ngIf="studentList && studentList.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Scholarship Id</th>
+                    <th scope="col">Scholarship Name</th>
+                    <th scope="col">Field</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Course Year</th>
+                    <th scope="col">SSC Score</th>
+                    <th scope="col">HSC Score</th>
+                    <th scope="col">Family Income</th>
+                    <th scope="col">Bank Name</th>
+                    <!-- th scope="col">Bank IFSC</th> -->
+                    <th scope="col">Bank Account Number</th>
+                    <th scope="col">App Status</th>
+                    <th scope="col">Approval</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of studentList" style="text-align: center;">
+                    <td>{{e.scholarship.scholarshipId}}</td>
+                    <td>{{e.scholarship.scholarshipName}}</td>
+                    <td>{{e.scholarship.field}}</td>
+                    <td>{{e.scholarship.course}}</td>
+                    <td>{{e.scholarship.courseYear}}</td>
+                    <td>{{e.scholarship.sscScore}}</td>
+                    <td>{{e.scholarship.hscScore}}</td>
+                    <td>{{e.scholarship.familyIncome}}</td>
+                    <td>{{e.scholarship.bankName}}</td>
+                    <!--td>{{e.scholarship.bankIfsc}}</td> -->
+                    <td>{{e.scholarship.accountNo}}</td>
+                    <td>{{e.scholarship.appStatus}}</td>
+                    <td>{{e.scholarship.approval}}</td>
+                    <td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive-md" class = "ajay">
+        <table class="table table-hover" *ngIf="studentList && studentList.length > 0 ">
+            <thead>
+                <tr>
+                    <th scope="col">Institute code</th>
+                    <th scope="col">Institute category</th>
+                    <th scope="col">Institute type</th>
+                    <th scope="col">Institute Name</th>
+                    <th scope="col">University Name</th>
+                    <th scope="col">Institute Address</th>
+                    <th scope="col">Institute City</th>
+                    <th scope="col">Institute State</th>
+                    <th scope="col">Year Open</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Institute Principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of studentList" style="text-align: center;">
+                    <td>{{e.institute.code}}</td>
+                    <td>{{e.institute.category}}</td>
+                    <td>{{e.institute.type}}</td>
+                    <td>{{e.institute.name}}</td>
+                    <td>{{e.institute.university}}</td>
+                    <td>{{e.institute.address}}</td>
+                    <td>{{e.institute.city}}</td>
+                    <td>{{e.institute.state}}</td>
+                    <td>{{e.institute.yearOpen}}</td>
+                    <td>{{e.institute.telephone}}</td>
+                    <td>{{e.institute.principal}}</td>
+
+                    <td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>

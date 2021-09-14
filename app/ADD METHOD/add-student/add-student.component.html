@@ -1,0 +1,454 @@
+<section class="h-600" style="background-color: #eee;">
+    <div class="container py-5 h-600">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+                            <div class="row g-0">
+                                <div class="col-lg-4 text-white" style="background-color: #B3C1DD;" >
+                                    <div class="p-5">
+                                        <h3 class="fw-normal mb-5" style="text-align: center;">Student Info</h3>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label" style="font-size: 20px;  font-weight: bold;"
+                                                    for="form3Examplev2">Full Name</label>
+                                                <input type="text" placeholder="Enter your Full Name" minlength="3"
+                                                    pattern="[a-zA-Z ]*" [(ngModel)]="stud.fullName" #studname='ngModel'
+                                                    name="studName" id="form3Examplev2"
+                                                    class="form-control form-control-lg" required />
+
+                                                    <div *ngIf='studname.errors
+                                                    && studname.touched' class="alert alert-danger">
+                                                        <div *ngIf="studname.errors.required" class="text-danger">Provide student Name </div>
+                                                        <div *ngIf="studname.errors.minlength" class="text-danger">Name must be at least 3 characters
+                                                            long.</div>
+                                                        <div *ngIf="studname.errors?.pattern" class="text-danger">Name can not contain numbers</div>
+                                
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">BirthDate</label>
+                                                <input type="date" min="01-01-1990" #bd="ngModel" max="01-01-2005"
+                                                    id="Birth" name="Birth Date" [(ngModel)]="stud.birthdate"
+                                                    class="form-control form-control-lg" />
+                                                    <div *ngIf='bd.errors
+                                                    && bd.touched' class="alert alert-danger">
+                                                        <div *ngIf="bd.errors.required" class="text-danger">Provide Birthdate  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label
+                                                    style="margin-right: 10px;font-size: 20px; font-weight: bold;">Gender:
+                                                </label><br>
+                                                <label style="margin-left: 60px;"
+                                                    style="font-size: 20px; font-weight: bold;">Male</label>
+                                                <input type="radio" style="margin-left: 3px;" name="sex" value="Male"
+                                                    [(ngModel)]="stud.gender" />
+                                                <label
+                                                    style="margin-left: 50px;font-size: 20px; font-weight: bold;">Female</label>
+                                                <input type="radio" style="margin-left: 3px; align-content: center;"
+                                                    name="sex" value="Female" [(ngModel)]="stud.gender" required />
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Mobile Number</label>
+                                                <input required minlength="12" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                                    type="number" #mobile='ngModel'
+                                                    placeholder="Enter your phone number" name="phonenumber"
+                                                    [(ngModel)]="stud.mobile" class="form-control form-control-lg" />
+
+                                                    <div *ngIf='mobile.errors && mobile.touched' class="alert alert-danger">
+                                                        <div *ngIf="mobile.errors.required" class="text-danger">Provide student Mobile number </div>
+                                
+                                
+                                                        <div *ngIf='mobile.errors?.pattern'>Phone number should consists of 10 digits</div>
+                                
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Email</label>
+                                                <input required type="email" readonly #emailv='ngModel' name="name"
+                                                    placeholder="Enter Email" [(ngModel)]="stud.email"
+                                                    class="form-control form-control-lg"
+                                                    pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"/>
+                                                    <div *ngIf='emailv.errors && emailv.touched' class="alert alert-danger">
+                            
+                                                        <div *ngIf='emailv.errors.required'> Provide email Id</div>
+                                                     
+                                                        <div *ngIf='emailv.errors?.pattern'>email should be valid</div>
+                                                        
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Address</label>
+                                                <input minlength="5" type="text" #studadd='ngModel' name="Address"
+                                                    placeholder="Enter address" [(ngModel)]="stud.address"
+                                                    class="form-control form-control-lg" required />
+
+                                                <div *ngIf='studadd.errors
+                        && studadd.touched' class="alert alert-danger">
+                                                    <div *ngIf="studadd.errors.required" class="text-danger">Provide
+                                                        address </div>
+                                                    <div *ngIf="studadd.errors.minlength" class="text-danger">Address
+                                                        must be at least 5 characters
+                                                        long.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">City</label>
+
+                                                <input required minlength="3" type="text" #scity='ngModel' name="city"
+                                                    placeholder="Enter city" [(ngModel)]="stud.city"
+                                                    pattern="[a-zA-Z ]*" class="form-control form-control-lg" />
+
+                                                <div *ngIf='scity.errors
+                        && scity.touched' class="alert alert-danger">
+                                                    <div *ngIf="scity.errors.required" class="text-danger">Provide city
+                                                    </div>
+                                                    <div *ngIf="scity.errors.minlength" class="text-danger">city must be
+                                                        at least 3 characters long.
+                                                    </div>
+                                                    <div *ngIf="scity.errors?.pattern" class="text-danger">City name can
+                                                        not contain number.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="p-5">
+                                        <h3 class="fw-normal mb-5" style="text-align: center;">Scholarship Info</h3>
+
+                                        <div class="mb-4 pb-2">
+                                            <label style="font-size: 20px; font-weight: bold;">Scholarship
+                                                Scheme</label>
+                                            <select name="scheme" required
+                                                [(ngModel)]="stud.scholarship.scholarshipName"
+                                                class="form-control form-control-lg">
+                                                <option value="" selected>--Select Option--</option>
+                                                <option ngValue="PRE-MATRIC SCHOLARSHIP(CLASS IX AND X)">PRE-MATRIC
+                                                    SCHOLARSHIP(CLASS IX AND X)
+                                                </option>
+                                                <option ngValue="POST MATRIC SCHOLARSHIP(BE/B.TECH)">POST MATRIC
+                                                    SCHOLARSHIP(BE/B.TECH)</option>
+                                                <option ngValue="POST MATRIC SCHOLARSHIP(DIPLOMA/BSC/BCA)">POST MATRIC
+                                                    SCHOLARSHIP(DIPLOMA/BSC/BCA)</option>
+                                                <option ngValue="POST MATRIC SCHOLARSHIP(MEDICAL)">POST MATRIC
+                                                    SCHOLARSHIP(MEDICAL)</option>
+                                                <option ngValue="POST MATRIC SCHOLARSHIP(LAW)">POST MATRIC
+                                                    SCHOLARSHIP(LAW)</option>
+                                                <option ngValue="POST MATRIC SCHOLARSHIP FOR STUDENTS(M.TECH/MCA/MSC)">
+                                                    POST MATRIC SCHOLARSHIP
+                                                    FOR STUDENTS(M.TECH/MCA/MSC)</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <label style="font-size: 20px; font-weight: bold;">Field</label>
+                                            <select required name="Field" [(ngModel)]="stud.scholarship.field"
+                                                class="form-control form-control-lg">
+                                                <option value="" selected>--Select Option--</option>
+                                                <option ngValue="Medical">Medical</option>
+                                                <option ngValue="Engineering">Engineering</option>
+                                                <option ngValue="Law">Law</option>
+                                                <option ngValue="Pre-matric">Pre-matric</option>
+                                                <option ngValue="MCA">MCA</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <label style="font-size: 20px; font-weight: bold;">Courses</label>
+                                            <select required name="course" [(ngModel)]="stud.scholarship.course"
+                                                class="form-control form-control-lg">
+                                                <option value="" selected>--Select Option--</option>
+                                                <option value="fulltime">Full Time</option>
+                                                <option value="parttime">Part Time</option>
+                                                <option value="Distance">Distance learning</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Course Year</label>
+                                                    <select required name="courseyear" [(ngModel)]="stud.scholarship.courseYear" class="form-control form-control-lg">
+                                                        <option value="" selected>--Select Option--</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2020">2020</option>
+                                                        <option value="2021">2021</option>
+                                                        <option value="2022">2022</option>
+                                                        
+                                                    </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">SSC Score</label>
+                                                <input required #ssc='ngModel' type="number" name="ssc"
+                                                    placeholder="Enter ssc marks"
+                                                    [(ngModel)]="stud.scholarship.sscScore"
+                                                    class="form-control form-control-lg" pattern="^(100|[1-9]?[0-9])$" />
+                                                    <div *ngIf='ssc.errors && ssc.touched' class="alert alert-danger">
+                                                        <div *ngIf='ssc.errors.required'> Provide Marks </div>
+                                                        <div *ngIf='ssc.errors.pattern'> Marks Should Be Within 1 to 100 Range</div>
+                                                    </div>
+                                                    
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">HSC Score</label>
+                                                <input required #hsc='ngModel' [(ngModel)]="stud.scholarship.hscScore"
+                                                    class="form-control form-control-lg" pattern="^(100|[1-9]?[0-9])$" type="number" name="hsc"
+                                                    placeholder="Enter hsc marks" />
+                                                    <div *ngIf='hsc.errors && hsc.touched' class="alert alert-danger">
+                        
+                                                        <div *ngIf='hsc.errors.required'> Provide marks </div>
+                                                        <div *ngIf='hsc.errors.pattern'> Marks Should Be Within 1 to 100 Range</div>
+                                
+                                                        </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Family Income</label>
+                                                <input required maxlength="6" pattern="^[0-9]{4,6}$" #family='ngModel'
+                                                    [(ngModel)]="stud.scholarship.familyIncome"
+                                                    class="form-control form-control-lg" type="number" name="income"
+                                                    placeholder="Enter family income" />
+                                                    <div *ngIf='family.dirty && family.touched && family.invalid' class="alert alert-danger">
+                                                        <div *ngIf='family.errors.required'> Provide Family Income </div>
+                                                        <div *ngIf = 'family.errors.maxlength'>Income Should Be Less Than 6 Digit</div>
+                                                        <div *ngIf = 'family.errors.pattern'>Income Should Be Less between thousands and lakhs only</div>
+                                                    
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Bank Name</label>
+                                                <input required minlength="3" #bankName='ngModel'
+                                                    [(ngModel)]="stud.scholarship.bankName"
+                                                    class="form-control form-control-lg" type="text"
+                                                    pattern="[a-zA-Z ]*" name="bankName"
+                                                    placeholder="Enter Bank Name" />
+
+                                                <div *ngIf='bankName.errors
+                        && bankName.touched' class="alert alert-danger">
+                                                    <div *ngIf="bankName.errors.required" class="text-danger">Provide
+                                                        Bank name </div>
+                                                    <div *ngIf="bankName.errors.minlength" class="text-danger">Bank name
+                                                        must be at least 3
+                                                        characters long.</div>
+                                                    <div *ngIf="bankName.errors?.pattern" class="text-danger">Bank name
+                                                        can not contain number</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Account Number</label>
+                                                <input required type="number" minlength="7" [(ngModel)]="stud.scholarship.accountNo"
+                                                    class="form-control form-control-lg" #BankId='ngModel'
+                                                    name="account" [class.is-invalid]="BankId.invalid && BankId.touched" pattern="^[0-9]{7,9}$" placeholder="Enter Bank Account Number" />
+                                                    <div *ngIf='BankId.errors && BankId.touched' class="alert alert-danger">
+                                                        <div *ngIf="BankId.errors.required" class="text-danger">Provide Bank account number  </div>
+                                                        <div *ngIf="BankId.errors.minlength" class="text-danger">Account number must be at least 7 characters long.</div>
+                                                        <div *ngIf="BankId.errors.pattern" class="text-danger">Account number must have minimum 7 digit and maximum 9</div>
+
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2" >
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">IFSC Code</label>
+                                                <input required [(ngModel)]="stud.scholarship.bankIfsc" pattern="^[A-Z]{4}0[A-Z0-9]{6}$" 
+                                                    class="form-control form-control-lg" #BankIFSC='ngModel'
+                                                    type="text" name="ifsc code" placeholder="Enter IFSC code" />
+
+                                                    <div *ngIf='BankIFSC.errors && BankIFSC.touched' class="alert alert-danger">
+                                
+                                                        <div *ngIf='BankIFSC.errors.required'> Provide 11 characters IFSC code </div>
+                                                        <div *ngIf="BankIFSC.errors?.pattern">
+                                                            IFSC code is not valid.
+                                                        </div>
+                                                        
+                                                        
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <button style="margin-top: 30%;background-color: #29465B;color: white; font-weight: bold;" type="submit"
+                                            class="btn btn-lg active btn-block" data-mdb-ripple-color="dark" >Submit</button>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-white" style="background-color: #B3C1DD;">
+                                    <div class="p-5">
+                                        <h3 class="fw-normal mb-5" style="text-align: center;">Institute Info</h3>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Institute Name</label>
+                                                <select required name="Stream" [(ngModel)]="stud.institute"
+                                                    class="form-control form-control-lg">
+                                                    <option value="" selected>--Select Option--</option>
+                                                    <option *ngFor="let e of instituteList" [ngValue]="e">{{e.name}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Institute Code:</label>
+                                                <input readonly type="number" [(ngModel)]="stud.institute.code"
+                                                    class="form-control form-control-lg" required name="code"
+                                                    placeholder="Enter institute code" required />
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Category</label>
+                                                <input type="text" readonly required name="category"
+                                                    placeholder="Enter Category" [(ngModel)]="stud.institute.category"
+                                                    class="form-control form-control-lg">
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Stream</label>
+                                                <input type="text" readonly required name="stream"
+                                                    placeholder="Enter stream" [(ngModel)]="stud.institute.type"
+                                                    class="form-control form-control-lg">
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">University
+                                                    Name::</label>
+                                                <input readonly type="text" [(ngModel)]="stud.institute.university"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    name="universityname" placeholder="Enter University name"
+                                                    required />
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Address:</label>
+                                                <input readonly type="text" name="instituteadd"
+                                                    [(ngModel)]="stud.institute.address"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    placeholder="Enter Address" required />
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">City:</label>
+                                                <input readonly type="text" name="institutecity"
+                                                    [(ngModel)]="stud.institute.city"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    placeholder="Enter City" required />
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">State</label>
+                                                <input readonly type="text" name="institutestate"
+                                                    [(ngModel)]="stud.institute.state"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    placeholder="Enter state name" required />
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Year Open</label>
+                                                <input readonly type="number" name="yearopen"
+                                                    [(ngModel)]="stud.institute.yearOpen"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    placeholder="Enter Year" required />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label"
+                                                    style="font-size: 20px; font-weight: bold;">Telephone Number</label>
+                                                <input readonly type="number" name="telephone"
+                                                    [(ngModel)]="stud.institute.telephone"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    placeholder="Enter Telephone Number" required />
+
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form3Examplev4"
+                                                    style="font-size: 20px; font-weight: bold;">Principal Name</label>
+                                                <input readonly type="text" name="principalname"
+                                                    [(ngModel)]="stud.institute.principal"
+                                                    class="form-control form-control-lg" #Inname='ngModel'
+                                                    placeholder="Enter principal name" required />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,137 @@
+<p>view-studentdata-officer works!</p>
+<h1 align="center">
+    All Student Details</h1>
+<hr>
+
+<div class="table-responsive-md">
+<div class="container">
+<table class="table table-striped" *ngIf="studentList && studentList.length > 0  else elseBlock">
+    <thead>
+        <tr>
+            <th scope="col">Student Id</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Student Address</th>
+            <th scope="col">City</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of studentList" style="text-align: center;">
+            <td>{{e.studentId}}</td>
+            <td>{{e.fullName}}</td>
+            <td>{{e.birthdate}}</td>
+            <td>{{e.gender}}</td>
+            <td>{{e.mobile}}</td>
+            <td>{{e.email}}</td>
+            <td>{{e.address}}</td>
+            <td>{{e.city}}</td>
+            <!-- <td>
+             <i class="fas fa-edit" (click)=update(e)></i>
+            </td> -->
+            
+            <td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock>
+    <h4 align="center"> There are no employees to display,please add the employees! </h4>
+</ng-template>
+
+</div>
+</div>
+
+<div class="table-responsive-md">
+    <div class="container">
+    <table class="table table-striped" *ngIf="studentList && studentList.length > 0 ">
+        <thead>
+            <tr>
+                <th scope="col">Scholarship Id</th>
+                <th scope="col">Scholarship Name</th>
+                <th scope="col">Field</th>
+                <th scope="col">Course</th>
+                <th scope="col">Course Year</th>
+                <th scope="col">SSC Score</th>
+                <th scope="col">HSC Score</th>
+                <th scope="col">Family Income</th>
+                <th scope="col">Bank Name</th>
+                <th scope="col">Bank IFSC</th>
+                <th scope="col">Bank Account Number</th>
+                <th scope="col">App Status</th>
+                <th scope="col">Approval</th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of studentList" style="text-align: center;">
+                <td>{{e.scholarship.scholarshipId}}</td>
+                <td>{{e.scholarship.scholarshipName}}</td>
+                <td>{{e.scholarship.field}}</td>
+                <td>{{e.scholarship.course}}</td>
+                <td>{{e.scholarship.courseYear}}</td>
+                <td>{{e.scholarship.sscScore}}</td>
+                <td>{{e.scholarship.hscScore}}</td>
+                <td>{{e.scholarship.familyIncome}}</td>
+                <td>{{e.scholarship.bankName}}</td>
+                <td>{{e.scholarship.bankIfsc}}</td>
+                <td>{{e.scholarship.accountNo}}</td>
+                <td>{{e.scholarship.appStatus}}</td>
+                <td>{{e.scholarship.approval}}</td>
+                <!-- <td>
+                 <i class="fas fa-edit" (click)=update(e)></i>
+                </td> -->
+
+                <td>
+                    <button type="button " class="btn btn-success" (click)=approve(e)>Approve</button>
+                </td>
+                <td>
+                    <button type="button " class="btn btn-danger" (click)=reject(e)>Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <ng-template #elseBlock>
+        <h4 align="center"> There are no employees to display,please add the employees! </h4>
+    </ng-template> -->
+    
+    </div>
+    </div>
+
+    <hr>
+    <div class="table-responsive-md">
+        <div class="container">
+        <table class="table table-striped" *ngIf="studentList && studentList.length > 0 " style = "width: 50%;">
+            <thead>
+                <tr>
+                    <th scope="col">Institute code</th>
+                    <th scope="col">Institute category</th>
+                    <th scope="col">Institute type</th>
+                    <th scope="col">Institute Name</th>
+                    <th scope="col">University Name</th>
+                    <th scope="col">Institute Address</th>
+                    <th scope="col">Institute City</th>
+                    <th scope="col">Institute State</th>
+                    <th scope="col">Year Open</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Institute Principal</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of studentList" style="text-align: center;">
+                    <td>{{e.institute.code}}</td>
+                    <td>{{e.institute.category}}</td>
+                    <td>{{e.institute.type}}</td>
+                    <td>{{e.institute.name}}</td>
+                    <td>{{e.institute.university}}</td>
+                    <td>{{e.institute.address}}</td>
+                    <td>{{e.institute.city}}</td>
+                    <td>{{e.institute.state}}</td>
+                    <td>{{e.institute.yearOpen}}</td>
+                    <td>{{e.institute.telephone}}</td>
+                    <td>{{e.institute.principal}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>

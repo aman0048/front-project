@@ -1,0 +1,50 @@
+<div class="container">
+    <h1>View All Institute</h1>
+    <div class="form-group">
+        <label>Search Institute By State:</label>
+        <input type="text" name="search" class="form-control form-control-lg" [(ngModel)]="filterInstitute"
+            placeholder="Enter the state of institution">
+    </div>
+</div>
+<div class="table-responsive-md" class="ajay">
+    <table class="table" *ngIf="instituteList && instituteList.length > 0 else elseBlock">
+        <thead>
+            <tr>
+                <th scope="col">Institute code</th>
+                <th scope="col">Category</th>
+                <th scope="col">Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">University Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Year Open</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Principal</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of instituteList | filter:filterInstitute" style="text-align: center;">
+                <td>{{e.code}}</td>
+                <td>{{e.category}}</td>
+                <td>{{e.type}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.university}}</td>
+                <td>{{e.address}}</td>
+                <td>{{e.city}}</td>
+                <td>{{e.state}}</td>
+                <td>{{e.yearOpen}}</td>
+                <td>{{e.telephone}}</td>
+                <td>{{e.principal}}</td>
+                <td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+
+        <marquee scrollamount="12">
+            <h2 style="text-align: center;"> There is no Institutes to be displayed </h2>
+        </marquee>
+    </ng-template>
+</div>

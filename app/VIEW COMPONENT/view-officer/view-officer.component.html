@@ -1,0 +1,49 @@
+<section class="h-600 gradient-custom-1">
+    <div class="container py-5 h-200">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <h1 style="font-size: 50px;" class="fw-normal mb-5">LIST OF ALL OFFICERS</h1>
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <form *ngFor="let e of OfficerList">
+                                <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline form-white">
+                                            <label style="font-size: 20px; font-weight: bold;" class="form-label"
+                                                for="form3Examplea2">Officer ID</label>
+                                            <input readonly type="number" id="form3Examplea2" value="{{e.officerId}}"
+                                                class="form-control form-control-lg" />
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline form-white">
+                                            <label style="font-size: 20px; font-weight: bold;" class="form-label"
+                                                for="form3Examplea2">Officer Name</label>
+                                            <input readonly type="text" id="form3Examplea2" value="{{e.officerName}}"
+                                                class="form-control form-control-lg" />
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline form-white">
+                                            <label style="font-size: 20px; font-weight: bold;" class="form-label"
+                                                for="form3Examplea2">Officer State</label>
+                                            <input readonly type="text" id="form3Examplea2" value="{{e.state}}"
+                                                class="form-control form-control-lg" />
+                                        </div>
+                                    </div>
+                                    <!-- </form> -->
+                                </div>
+                            </div>
+                            </form>
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

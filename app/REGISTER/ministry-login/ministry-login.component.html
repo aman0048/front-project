@@ -1,0 +1,99 @@
+  <html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title> 
+</head>
+<body>
+
+  <section class="vh-600" style="background-color: #eee;">
+    <div class="container py-5 h-200">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="./assets/Ministry.jpg" height="600px" width="600px" class="img-fluid" alt="Sample image"
+                style="margin-top: 20%; margin-left: 10%;">
+              </div>
+              <div class="vl"></div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+
+                  <form #loginForm="ngForm" (ngSubmit)="MinisterLoginButton(loginForm.value)">
+
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                      <span class="h1 fw-bold mb-0">Ministry Signup</span>
+                    </div>
+
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register Your Account</h5>
+
+                    <div class="form-outline">
+                      <div class="form-group" [class.has-error]="loginForm.touched && !loginForm.valid">
+                        <label style="margin-left: 30px;font-size: 20px; font-weight: bold;" class="input-field" class="form-label"
+                          for="form2Example17">Email address</label>
+                          <label class="text-danger">*</label><br>
+                        <div class="input-container">
+                          <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 9px; margin-right:7px;" width="25"
+                            height="25" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path
+                              d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                          </svg>
+                          <input #emailv="ngModel" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" class="input-field" type="email" #userRef='ngModel' [(ngModel)]="minister.user.username" id="form2Example17" ngModel
+                            class="form-control form-control-lg" name="username" placeholder="Enter Email" required>
+                          <!-- <input type="email" id="form2Example17" class="form-control form-control-lg" /> -->
+                        </div>
+
+                        <div *ngIf='emailv.errors && emailv.touched' class="alert alert-danger">
+                            
+                          <div *ngIf='emailv.errors.required'> Provide email Id</div>
+                       
+                          <div *ngIf='emailv.errors.pattern'>email should be valid</div>
+                          
+                      </div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline">
+                      <div class="form-group">
+                        <label style="margin-left: 30px;font-size: 20px; font-weight: bold;" class="form-label" for="form2Example29">Password</label>
+                        <div class="input-container">
+                          <label class="text-danger">*</label><br>
+                          <svg style="margin-top: 7px; margin-right:7px;" xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                            <path
+                              d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                          </svg>
+                          <input class="input-field" type="password" #password='ngModel' [(ngModel)]="minister.user.password" ngModel id="form2Example29"
+                            class="form-control form-control-lg" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" name="password" placeholder="Enter password" required>
+                        </div>
+                        <div>
+                          <i class="fas fa-eye" style="margin-left: 30px;" (click)="togglePassword()">  Show Password </i> 
+                        </div>
+                        <!-- <input type="password" id="form2Example27" class="form-control form-control-lg" /> -->
+                        <div id="errorMessage" *ngIf="password.invalid && password.touched">
+                          <span *ngIf="password.errors?.required" class="text-danger">Password is required</span>
+                          <span *ngIf="password.errors?.pattern" class="text-danger">password is not valid</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-block" [disabled]="loginForm.invalid" style="margin-left: 20px;"
+                        type="submit">Register</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
